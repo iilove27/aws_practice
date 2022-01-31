@@ -7,7 +7,7 @@ seed = 0
 def index():
     global seed 
     if request.method == 'POST':
-        num = json.loads(request.data)
+        num = json.loads(request.data)['num']
         seed = num
         return f'SEED VALUE UPDATED TO {seed}.'
     
