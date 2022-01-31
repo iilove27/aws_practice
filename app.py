@@ -1,4 +1,5 @@
 from flask import Flask, request
+import json
 
 app = Flask(__name__)
 seed = 0
@@ -6,7 +7,7 @@ seed = 0
 def index():
     global seed 
     if request.method == 'POST':
-        num = request.form.get('num')
+        num = json.loads(request.data)
         seed = num
         return f'SEED VALUE UPDATED TO {seed}.'
     
@@ -14,4 +15,4 @@ def index():
         return f'{seed}'
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=3000)
+    app.run(host='0.0.0.0', port=80)
